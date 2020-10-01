@@ -1,15 +1,17 @@
 <template lang="pug">
   nav.navbar.navbar-expand-lg.navbar-light.bg-white
-    .container
-      router-link.navbar-brand(:to="{ name: 'index' }")
-        | {{ appName }}
-
+    .container.items-stretch.h-100
       button.navbar-toggler(:aria-label="$t('toggle_navigation')" type="button"
               data-toggle="collapse" data-target="#navbarToggler"
               aria-controls="navbarToggler" aria-expanded="false" )
         span.navbar-toggler-icon
 
-      #navbarToggler.collapse.navbar-collapse
+      #navbarToggler.collapse.navbar-collapse.h-100
+
+        ul.navbar-nav.h-100
+          router-link.navbar-brand.h-100(:to="{ name: 'index' }")
+            img.logo(src="/images/logo.jpg" :alt="appName")
+
         ul.navbar-nav
           li.nav-item
             a.nav-link(href='#') Рейтинг
@@ -73,8 +75,22 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.profile-photo
-  width 2rem
-  height 2rem
-  margin -.375rem 0
+  .navbar
+    height 56px
+
+    .items-stretch
+      align-items stretch
+
+    .navbar-brand
+      position relative
+      padding 0
+
+      .logo
+        height 100%
+
+    #navbarToggler
+      .profile-photo
+        width 2rem
+        height 2rem
+        margin -.375rem 0
 </style>
