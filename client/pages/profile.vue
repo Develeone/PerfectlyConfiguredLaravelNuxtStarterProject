@@ -16,7 +16,7 @@ export default {
   middleware: 'auth',
 
   head () {
-    return { title: this.$t('profile') + ' | ' + this.$t('project_name') }
+    return { title: this.$t('profile') }
   }
 }
 </script>

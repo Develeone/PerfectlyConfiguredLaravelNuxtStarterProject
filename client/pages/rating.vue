@@ -8,7 +8,7 @@ export default {
   middleware: 'auth',
 
   head () {
-    return { title: this.$t('rating') + ' | ' + this.$t('project_name') }
+    return { title: this.$t('rating') }
   }
 }
 </script>

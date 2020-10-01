@@ -25,7 +25,10 @@ export default {
   // layout: 'simple',
 
   head () {
-    return { title: this.$t('main_page') + ' | ' + this.$t('project_name') }
+    return {
+      title: this.$t('main_page'),
+      description: 'testtesttest'
+    }
   },
 
   data: () => ({
