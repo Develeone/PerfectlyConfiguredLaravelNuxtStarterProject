@@ -12,7 +12,9 @@
 
     .text-center
       .title.mb-4
-        | Большой Дальневосточный Квест
+        H1 {{ $t('bfeq') }}
+          br
+          small {{ $t('main_page') }}
 
 </template>
 

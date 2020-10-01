@@ -14,7 +14,7 @@
 
         ul.navbar-nav
           li.nav-item
-            a.nav-link(href='#') Рейтинг
+            router-link.nav-link(:to="{ name: 'rating' }") {{ $t('rating') }}
 
         ul.navbar-nav.ml-auto
           // Authenticated
