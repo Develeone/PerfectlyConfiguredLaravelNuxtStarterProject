@@ -15,7 +15,7 @@ export const actions = {
   },
 
   nuxtClientInit ({ commit }) {
-    const token = Cookies.get('token')
+    const token = Cookies.get('token') || localStorage.getItem('token')
     if (token) {
       commit('auth/SET_TOKEN', token)
     }

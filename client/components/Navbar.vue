@@ -1,64 +1,46 @@
-<template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container">
-      <router-link :to="{ name: user ? 'home' : 'welcome' }" class="navbar-brand">
-        {{ appName }}
-      </router-link>
+<template lang="pug">
+  nav.navbar.navbar-expand-lg.navbar-light.bg-white
+    .container
+      router-link.navbar-brand(:to="{ name: 'index' }")
+        | {{ appName }}
 
-      <button :aria-label="$t('toggle_navigation')" class="navbar-toggler" type="button"
+      button.navbar-toggler(:aria-label="$t('toggle_navigation')" type="button"
               data-toggle="collapse" data-target="#navbarToggler"
-              aria-controls="navbarToggler" aria-expanded="false"
-      >
-        <span class="navbar-toggler-icon" />
-      </button>
+              aria-controls="navbarToggler" aria-expanded="false" )
+        span.navbar-toggler-icon
 
-      <div id="navbarToggler" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <locale-dropdown />
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li> -->
-        </ul>
+      #navbarToggler.collapse.navbar-collapse
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link(href='#') Рейтинг
 
-        <ul class="navbar-nav ml-auto">
-          <!-- Authenticated -->
-          <li v-if="user" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-dark"
-               href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            >
-              <img :src="user.photo_url" class="rounded-circle profile-photo mr-1">
-              {{ user.name }}
-            </a>
-            <div class="dropdown-menu">
-              <router-link :to="{ name: 'settings.profile' }" class="dropdown-item pl-3">
-                <fa icon="cog" fixed-width />
-                {{ $t('settings') }}
-              </router-link>
+        ul.navbar-nav.ml-auto
+          // Authenticated
+          li.nav-item.dropdown(v-if='user')
+            a.nav-link.dropdown-toggle.text-dark(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              img.rounded-circle.profile-photo.mr-1(:src='user.photo_url')
+              | {{ user.name }}
+            .dropdown-menu
+              router-link.dropdown-item.pl-3(:to="{ name: 'profile' }")
+                fa(icon='user' fixed-width='')
+                | {{ $t('personal_cabinet') }}
+              .dropdown-divider
+              router-link.dropdown-item.pl-3(:to="{ name: 'settings.profile' }")
+                fa(icon='cog' fixed-width='')
+                | {{ $t('settings') }}
+              .dropdown-divider
+              a.dropdown-item.pl-3(href='#' @click.prevent='logout')
+                fa(icon='sign-out-alt' fixed-width='')
+                | {{ $t('logout') }}
 
-              <div class="dropdown-divider" />
-              <a class="dropdown-item pl-3" href="#" @click.prevent="logout">
-                <fa icon="sign-out-alt" fixed-width />
-                {{ $t('logout') }}
-              </a>
-            </div>
-          </li>
-          <!-- Guest -->
-          <template v-else>
-            <li class="nav-item">
-              <router-link :to="{ name: 'login' }" class="nav-link" active-class="active">
-                {{ $t('login') }}
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link :to="{ name: 'register' }" class="nav-link" active-class="active">
-                {{ $t('register') }}
-              </router-link>
-            </li>
-          </template>
-        </ul>
-      </div>
-    </div>
-  </nav>
+          // Guest
+          template(v-else='')
+            li.nav-item
+              router-link.nav-link(:to="{ name: 'login' }" active-class='active')
+                | {{ $t('login') }}
+            li.nav-item
+              router-link.nav-link(:to="{ name: 'register' }" active-class='active')
+                | {{ $t('register') }}
 </template>
 
 <script>
@@ -90,10 +72,9 @@ export default {
 }
 </script>
 
-<style scoped>
-.profile-photo {
-  width: 2rem;
-  height: 2rem;
-  margin: -.375rem 0;
-}
+<style scoped lang="stylus">
+.profile-photo
+  width 2rem
+  height 2rem
+  margin -.375rem 0
 </style>

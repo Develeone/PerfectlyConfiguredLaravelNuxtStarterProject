@@ -44,6 +44,7 @@ export const actions = {
     commit('SET_TOKEN', token)
 
     Cookies.set('token', token, { expires: remember ? 365 : null })
+    localStorage.setItem('token', token)
   },
 
   async fetchUser ({ commit }) {
@@ -53,6 +54,7 @@ export const actions = {
       commit('FETCH_USER_SUCCESS', data)
     } catch (e) {
       Cookies.remove('token')
+      localStorage.removeItem('token')
 
       commit('FETCH_USER_FAILURE')
     }
@@ -68,6 +70,7 @@ export const actions = {
     } catch (e) { }
 
     Cookies.remove('token')
+    localStorage.removeItem('token')
 
     commit('LOGOUT')
   },
