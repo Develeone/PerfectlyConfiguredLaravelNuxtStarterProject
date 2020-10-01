@@ -10,7 +10,7 @@
 
         ul.navbar-nav.h-100
           router-link.navbar-brand.h-100(:to="{ name: 'index' }")
-            img.logo(src="/images/logo.jpg" :alt="appName")
+            img.logo(src="/images/logo.svg" :alt="appName")
 
         ul.navbar-nav
           li.nav-item

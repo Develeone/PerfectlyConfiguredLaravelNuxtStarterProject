@@ -35,7 +35,7 @@ export default {
   middleware: 'guest',
 
   metaInfo () {
-    return { title: this.$t('verify_email') }
+    return { title: this.$t('verify_email') + ' | ' + this.$t('project_name') }
   },
 
   data: () => ({

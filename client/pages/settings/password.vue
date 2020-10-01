@@ -40,7 +40,7 @@ export default {
   scrollToTop: false,
 
   head () {
-    return { title: this.$t('settings') }
+    return { title: this.$t('settings') + ' | ' + this.$t('project_name') }
   },
 
   data: () => ({

@@ -57,7 +57,7 @@ import Form from 'vform'
 
 export default {
   head () {
-    return { title: this.$t('login') }
+    return { title: this.$t('login') + ' | ' + this.$t('project_name') }
   },
 
   data: () => ({
